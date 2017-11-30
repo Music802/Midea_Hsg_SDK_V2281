@@ -1,0 +1,637 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# Project Configuration
+# Thu Nov 30 17:54:47 2017
+#
+#
+set(CFG_CTRLBOARD y)
+set(CFG_DEF_CHIP_PKG_IT9854 y)
+set(CFG_DEF_CHIP_REV_A0 y)
+set(CFG_RAM_SIZE "0x4000000")
+set(CFG_RAM_INIT_SCRIPT "IT9850A0_360MHz_tiling_pitch2048.scr")
+set(CFG_SET_ROTATE 1)
+set(CFG_TILING_WIDTH_128 0)
+set(CFG_WATCHDOG_ENABLE y)
+set(CFG_DCPS_ENABLE y)
+set(CFG_FONT_FILENAME "wqyMicroHeiProportional.ttf")
+set(CFG_BACKLIGHT_ENABLE y)
+set(CFG_BACKLIGHT_DUTY_CYCLES "95, 92, 88, 82, 75, 65, 55, 40, 25, 5")
+set(CFG_BACKLIGHT_DEFAULT_DUTY_CYCLE "5")
+set(CFG_LCD_ENABLE y)
+
+#
+# (unvisible)
+#
+set(CFG_LCD_WIDTH "480")
+set(CFG_LCD_HEIGHT "854")
+set(CFG_LCD_PITCH "960")
+set(CFG_LCD_INIT_SCRIPT "lcd_480_854_ILI8906E_5inch_888.txt.in")
+set(CFG_CMDQ_ENABLE y)
+set(CFG_M2D_ENABLE y)
+set(CFG_JPEG_HW_ENABLE y)
+set(CFG_AUDIO_ENABLE y)
+set(CFG_AUDIO_DAC_MODULE "itp_dac_alc5616.c")
+set(CFG_AUDIO_CODEC_MP3DEC y)
+set(CFG_AUDIO_CODEC_WMADEC y)
+set(CFG_AUDIO_CODEC_WAV y)
+set(CFG_COMPRESS_AUDIO_PLUGIN y)
+set(CFG_VIDEO_ENABLE y)
+# CFG_KEYPAD_ENABLE is not set
+# CFG_NOR_ENABLE is not set
+set(CFG_NOR_CACHE_SIZE "0x200000")
+set(CFG_NOR_RESERVED_SIZE "0x210000")
+set(CFG_NOR_PARTITION0 y)
+set(CFG_NOR_PARTITION0_SIZE "0xB00000")
+# CFG_NOR_PARTITION1 is not set
+set(CFG_NOR_PARTITION1_SIZE "0x280000")
+set(CFG_NOR_PARTITION2 y)
+set(CFG_NOR_PARTITION2_SIZE "0x40000")
+set(CFG_NOR_PARTITION3 y)
+set(CFG_TEMP_DRIVE "D")
+set(CFG_SD0_ENABLE y)
+set(CFG_GPIO_SD0_IO "16, 17, 18, 19, 20, 21, -1, -1, -1, -1")
+set(CFG_USB0_ENABLE y)
+set(CFG_MSC_ENABLE y)
+set(CFG_FS_FAT y)
+set(CFG_RTC_ENABLE y)
+set(CFG_I2C0_ENABLE y)
+set(CFG_DEF_IIC0_GPIO_CONFIG_1 y)
+set(CFG_I2C1_ENABLE y)
+set(CFG_DEF_IIC1_GPIO_CONFIG_1 y)
+set(CFG_TOUCH_ENABLE y)
+set(CFG_TOUCH_MODULE "cvte_ilitek_new")
+set(CFG_TOUCH_X_MAX_VALUE "0x1E0")
+set(CFG_TOUCH_Y_MAX_VALUE "0x356")
+set(CFG_GPIO_TOUCH_INT "27")
+set(CFG_GPIO_TOUCH_WAKE "-1")
+set(CFG_DEF_TOUCH_I2C1 y)
+set(CFG_I2S_ENABLE y)
+# CFG_I2S_SPDIF_ENABLE is not set
+set(CFG_POWER_SAVING_ENABLE y)
+set(CFG_DEF_POWER_STANDBY y)
+set(CFG_POWER_STANDBY_CPU_FREQ_RATIO "15")
+set(CFG_POWER_STANDBY_BUS_FREQ_RATIO "30")
+set(CFG_UART1_ENABLE y)
+set(CFG_GPIO_UART1_TX "4")
+set(CFG_GPIO_UART1_RX "-1")
+set(CFG_UART0_ENABLE y)
+set(CFG_GPIO_UART0_TX "22")
+set(CFG_GPIO_UART0_RX "23")
+set(CFG_GPIO_SD0_CARD_DETECT "31")
+set(CFG_GPIO_SD0_POWER_ENABLE "32")
+set(CFG_SPI0_MOSI_GPIO "18")
+set(CFG_SPI0_MISO_GPIO "19")
+set(CFG_SPI0_CLOCK_GPIO "20")
+set(CFG_SPI0_CHIP_SEL_GPIO "14")
+# CFG_SPI1_ENABLE is not set
+set(CFG_GPIO_BACKLIGHT_PWM "77")
+# CFG_GPIO_EXPANDER_ENABLE is not set
+set(CFG_NET_ENABLE y)
+set(CFG_TASK_DRIVE_PROBE y)
+set(CFG_DEF_DBG_UART1 y)
+set(CFG_DBG_INIT_SCRIPT "IT9850A0_400MHz.txt")
+set(CFG_DBG_STATS y)
+set(CFG_DBG_STATS_HEAP y)
+set(CFG_DEF_BUILD_MINSIZEREL y)
+set(CFG_SYSTEM_NAME "ITE Display Control Board")
+set(CFG_ITU_FT_CACHE_ENABLE y)
+set(CFG_ITU_FT_CACHE_SIZE "0xFA000")
+set(CFG_GCC_LTO y)
+set(CFG_BUILD_AUDIO_MGR y)
+set(CFG_BUILD_INIPARSER y)
+set(CFG_BUILD_ITU y)
+set(CFG_BUILD_SDL y)
+set(CFG_BUILD_UPGRADE y)
+set(CFG_BUILD_PYINPUT y)
+
+#
+# (unvisible)
+#
+# CFG_NET_ETHERNET is not set
+set(CFG_NET_ETHERNET_LINK_INTR y)
+set(CFG_NET_ETHERNET_MAC_ADDR_RANDOM y)
+set(CFG_NET_ETHERNET_MAC_ADDR_STORAGE y)
+
+#
+# (unvisible)
+#
+set(CFG_NET_ETHERNET_MAC_ADDR_POS "0x200000")
+set(CFG_NET_ETHERNET_MAC_ADDR_UPGRADE y)
+set(CFG_NET_DHCP_SERVER y)
+set(CFG_DHCPS_ADDR_COUNT "254")
+set(CFG_BUILD_MICROHTTPD y)
+set(CFG_BUILD_XML2 y)
+
+#
+# (unvisible)
+#
+set(CFG_NET_WIFI_WPA y)
+set(CFG_NET_WIFI_SSID "CtrlBoard")
+# CFG_NET_WIFI_FIND_BEST_CHANNEL is not set
+set(CFG_NET_WIFI_REDEFINE y)
+set(CFG_NET_HTTP y)
+set(CFG_NET_FTP y)
+
+#
+# (unvisible)
+#
+set(CFG_BOOTLOADER_ENABLE y)
+
+#
+# (unvisible)
+#
+set(CFG_LCD_BOOT_BITMAP "logo.bmp")
+set(CFG_BL_SHOW_LOGO y)
+
+#
+# (unvisible)
+#
+set(CFG_UPGRADE_BOOTLOADER y)
+set(CFG_UPGRADE_IMAGE y)
+
+#
+# (unvisible)
+#
+set(CFG_UPGRADE_IMAGE_POS "0x300000")
+set(CFG_UPGRADE_DATA y)
+set(CFG_UPGRADE_PUBLIC y)
+set(CFG_UPGRADE_OPEN_FILE y)
+set(CFG_UPGRADE_PARTITION y)
+set(CFG_UPGRADE_DELETE_PKGFILE_AFTER_FINISH y)
+set(CFG_UPGRADE_NOR_IMAGE y)
+set(CFG_UPGRADE_NOR_IMAGE_SIZE "0x1000000")
+set(CFG_BL_LCD_CONSOLE y)
+set(CFG_BL_ERR y)
+set(CFG_BL_WARN y)
+set(CFG_BL_INFO y)
+set(CFG_BL_DBG y)
+set(CFG_CHECK_FILES_CRC_ON_BOOTING y)
+set(CFG_HAVE_LCD y)
+set(CFG_HAVE_GRAPHICS y)
+set(CFG_HAVE_AUDIO y)
+set(CFG_HAVE_VIDEO y)
+
+#
+# (unvisible)
+#
+set(CFG_DEF_CFG_RELEASE y)
+
+#
+# (unvisible)
+#
+
+#
+# Develop Environment
+#
+# CFG_DEV_DEVELOP is not set
+set(CFG_DEV_RELEASE y)
+
+#
+# OpenRTOS
+#
+set(CFG_OPENRTOS_HEAP_SIZE "0")
+set(CFG_MMAP_SIZE "0")
+
+#
+# System
+#
+set(CFG_CPU_FA626 y)
+# CFG_CPU_SM32 is not set
+# CFG_CHIP_PKG_IT9079 is not set
+# CFG_CHIP_PKG_IT9852 is not set
+set(CFG_CHIP_PKG_IT9854 y)
+# CFG_CHIP_PKG_IT9856 is not set
+# CFG_CHIP_PKG_IT9910 is not set
+# CFG_CHIP_PKG_IT9920 is not set
+set(CFG_WATCHDOG_TIMEOUT 10)
+set(CFG_WATCHDOG_REFRESH_INTERVAL 1)
+# CFG_WATCHDOG_INTR is not set
+# CFG_WATCHDOG_IDLETASK is not set
+# CFG_EXT_WATCHDOG_ENABLE is not set
+
+#
+# Internal Settings
+#
+set(CFG_MEMDBG_ENABLE y)
+set(CFG_ROM_COMPRESS y)
+# CFG_DPU_ENABLE is not set
+# CFG_SD_DUAL_BOOT is not set
+# CFG_SPREAD_SPECTRUM_PLL1_ENABLE is not set
+# CFG_SPREAD_SPECTRUM_PLL2_ENABLE is not set
+# CFG_SPREAD_SPECTRUM_PLL3_ENABLE is not set
+set(CFG_CPU_WB y)
+# CFG_XCPU_MSGQ is not set
+
+#
+# Screen
+#
+set(CFG_ENABLE_ROTATE y)
+set(CFG_LCD_BPP "2")
+# CFG_LCD_MULTIPLE is not set
+set(CFG_LCD_TRIPLE_BUFFER y)
+# CFG_HDMI_OUT_ENABLE is not set
+set(CFG_LCD_BOOT_BGCOLOR "0x000000")
+set(CFG_BACKLIGHT_FREQ "1000")
+set(CFG_BACKLIGHT_BOOTLODER_DELAY "200")
+
+#
+# Internal Setting
+#
+# CFG_TVOUT_ENABLE is not set
+
+#
+# Graphics
+#
+set(CFG_CMDQ_SIZE "0x40000")
+# CFG_OPENVG_ENABLE is not set
+
+#
+# Audio
+#
+# CFG_DIALOGUE_PARAMETER_SET is not set
+# CFG_AUDIO_CODEC_AACDEC is not set
+# CFG_AUDIO_CODEC_AC3DEC is not set
+# CFG_AUDIO_CODEC_AC3SPDIF is not set
+# CFG_AUDIO_CODEC_AMR is not set
+# CFG_AUDIO_CODEC_EAC3DEC is not set
+# CFG_AUDIO_CODEC_MP2DEC is not set
+# CFG_AUDIO_CODEC_FLACDEC is not set
+# CFG_AUDIO_CODEC_G711_ALAW is not set
+# CFG_AUDIO_CODEC_G711_ULAW is not set
+# CFG_RISC_TS_DEMUX_PLUGIN is not set
+# CFG_AUDIO_MGR_M4A is not set
+# CFG_AUDIO_MGR_WAV_HD is not set
+# CFG_AUDIO_MGR_LRC is not set
+# CFG_AUDIO_MGR_RESAMPLE is not set
+# CFG_AUDIO_MGR_PARSING_MP3 is not set
+
+#
+# Video
+#
+# CFG_TS_MODULE_ENABLE is not set
+# CFG_MULTICAST_ENABLE is not set
+# CFG_RTSP_CLIENT_ENABLE is not set
+# CFG_UVC_ENABLE is not set
+
+#
+# Storage
+#
+set(CFG_NAND_ENABLE y)
+set(CFG_SPI_NAND y)
+set(CFG_SPI_NAND_USE_SPI0 y)
+set(CFG_NAND_PAGE_SIZE "2048")
+set(CFG_NAND_BLOCK_SIZE "64")
+set(CFG_SPI_NAND_BOOT y)
+# CFG_SPI_NAND_ADDR_NO_DUMMY_BYTE is not set
+set(CFG_SPI_NAND_ADDR_HAS_DUMMY_BYTE y)
+set(CFG_SPI_NAND_ADDR_TYPE "8")
+set(CFG_NAND_ECC_DATA_SIZE "21")
+set(CFG_NAND_SPARE_SIZE "24")
+# CFG_NOR_SHARE_GPIO is not set
+# CFG_SD0_STATIC is not set
+# CFG_SD1_ENABLE is not set
+# CFG_MMC_ENABLE is not set
+# CFG_RAMDISK_ENABLE is not set
+# CFG_UAS_ENABLE is not set
+
+#
+# File System
+#
+# CFG_FS_NTFS is not set
+set(CFG_NAND_RESERVED_SIZE "0x1000000")
+set(CFG_NAND_PARTITION0 y)
+set(CFG_NAND_PARTITION0_SIZE "0x1E00000")
+set(CFG_NAND_PARTITION1 y)
+set(CFG_NAND_PARTITION1_SIZE "0x1000000")
+set(CFG_NAND_PARTITION2 y)
+set(CFG_NAND_PARTITION2_SIZE "0x1000000")
+set(CFG_NAND_PARTITION3 y)
+set(CFG_NAND_PARTITION3_SIZE "0")
+set(CFG_NOR_PARTITION3_SIZE "0")
+set(CFG_PRIVATE_DRIVE "A")
+set(CFG_PUBLIC_DRIVE "B")
+
+#
+# Peripheral
+#
+set(CFG_RTC_MODULE "itp_rtc_bl5372.c")
+set(CFG_RTC_USE_I2C y)
+# CFG_RTC_I2C0 is not set
+set(CFG_RTC_I2C1 y)
+set(CFG_RTC_REDUCE_IO_ACCESS_ENABLE y)
+set(CFG_RTC_SYNC_PERIOD "1800")
+set(CFG_RTC_DEFAULT_TIMESTAMP "1483228800")
+# CFG_SW_I2C_ENABLE is not set
+set(CFG_I2S_OUTPUT_PIN_ENABLE y)
+set(CFG_DAC_port_I2C0 y)
+# CFG_DAC_port_I2C1 is not set
+set(CFG_SPI_ENABLE y)
+set(CFG_SPI0_ENABLE y)
+# CFG_SPI0_40MHZ_ENABLE is not set
+# CFG_RGBTOMIPI_ENABLE is not set
+# CFG_WIEGAND_ENABLE is not set
+# CFG_TV_ENCODER_ENABLE is not set
+# CFG_CAPTURE_MODULE_ENABLE is not set
+# CFG_IOEX_ENABLE is not set
+set(CFG_UART0_BAUDRATE "115200")
+set(CFG_UART1_BAUDRATE "115200")
+# CFG_UART2_ENABLE is not set
+# CFG_UART3_ENABLE is not set
+set(CFG_UART_INTR y)
+set(CFG_UART_BUF_SIZE "16384")
+# CFG_UART_DMA is not set
+# CFG_UART_FORCE_FLUSH is not set
+# CFG_RS485_0_ENABLE is not set
+# CFG_RS485_1_ENABLE is not set
+# CFG_RS485_2_ENABLE is not set
+# CFG_RS485_3_ENABLE is not set
+# CFG_RS485_4_ENABLE is not set
+# CFG_SWUART_CODEC_ENABLE is not set
+set(CFG_USB1_ENABLE y)
+# CFG_USB_DEVICE is not set
+# CFG_IRDA_ENABLE is not set
+# CFG_IR_ENABLE is not set
+# CFG_TOUCH_I2C0 is not set
+set(CFG_TOUCH_I2C1 y)
+# CFG_TOUCH_SPI is not set
+set(CFG_TOUCH_CAPACITIVE y)
+# CFG_TOUCH_RESISTIVE is not set
+set(CFG_TOUCH_INTR y)
+# CFG_TOUCH_MULTI_FINGER is not set
+# CFG_TOUCH_ADVANCE_CONFIG is not set
+# CFG_BATTERY_ENABLE is not set
+# CFG_GSENSOR_ENABLE is not set
+# CFG_HEADSET_ENABLE is not set
+# CFG_SPEAKER_ENABLE is not set
+# CFG_AMPLIFIER_ENABLE is not set
+# CFG_LED_ENABLE is not set
+# CFG_SWITCH_ENABLE is not set
+# CFG_TUNER_ENABLE is not set
+# CFG_FM2018_ENABLE is not set
+# CFG_AUDIOAMP_ENABLE is not set
+# CFG_SENSOR_ENABLE is not set
+# CFG_USB_HID_ENABLE is not set
+# CFG_ALT_CPU_ENABLE is not set
+
+#
+# Power
+#
+# CFG_POWER_ON is not set
+set(CFG_POWER_STANDBY y)
+# CFG_POWER_SLEEP is not set
+# CFG_POWER_DOZE is not set
+# CFG_POWER_TICKLESS_IDLE is not set
+
+#
+# GPIO
+#
+# CFG_SD0_CARD_DETECT_ACTIVE_HIGH is not set
+set(CFG_GPIO_SD0_WRITE_PROTECT "-1")
+# CFG_GPIO_TOUCH_INT_ACTIVE_HIGH is not set
+set(CFG_GPIO_TOUCH_RESET "28")
+set(CFG_GPIO_ETHERNET_LINK "23")
+# CFG_IIC0_GPIO_CONFIG_1 is not set
+set(CFG_IIC0_GPIO_CONFIG_2 y)
+# CFG_IIC0_GPIO_CONFIG_3 is not set
+set(CFG_IIC1_GPIO_CONFIG_1 y)
+# CFG_IIC1_GPIO_CONFIG_2 is not set
+# CFG_IIC1_GPIO_CONFIG_3 is not set
+# CFG_I2S_USE_GPIO_MODE_1 is not set
+# CFG_I2S_USE_GPIO_MODE_2 is not set
+set(CFG_I2S_USE_GPIO_MODE_3 y)
+
+#
+# Network
+#
+set(CFG_NET_ETHERNET_MAC_ADDR_NAND y)
+# CFG_NET_ETHERNET_MAC_ADDR_SD0 is not set
+set(CFG_NET_ETHERNET_MAC_ADDR_VERIFY_CODE "IT")
+
+#
+# (unvisible)
+#
+set(CFG_NET_WIFI y)
+set(CFG_NET_WIFI_MGR y)
+set(CFG_NET_WIFI_POLL_INTERVAL "50")
+set(CFG_NET_WIFI_8188EUS y)
+# CFG_NET_WIFI_HOSTAPD is not set
+# CFG_NET_WIFI_TRANS_LED is not set
+set(CFG_NET_WIFI_MP_SSID "audiolink")
+set(CFG_NET_WIFI_MP_PASSWORD "12345678")
+set(CFG_NET_WIFI_MP_SECURITY "0")
+
+#
+# (unvisible)
+#
+# CFG_NET_FTP_SERVER is not set
+# CFG_NET_TFTP is not set
+# CFG_NET_P2P is not set
+# CFG_NET_UPNP is not set
+# CFG_NET_DNS_SD is not set
+# CFG_BLOCK_UDP is not set
+# CFG_SIP_PROXD_TEST is not set
+# CFG_SIP_SERVER_TEST is not set
+# CFG_P2P is not set
+
+#
+# Task
+#
+
+#
+# Debug
+#
+# CFG_DBG_NONE is not set
+# CFG_DBG_PRINTBUF is not set
+# CFG_DBG_SWUART_CODEC is not set
+# CFG_DBG_UART0 is not set
+set(CFG_DBG_UART1 y)
+# CFG_DBG_LCDCONSOLE is not set
+# CFG_DBG_OSDCONSOLE is not set
+set(CFG_DBG_ICE_SCRIPT "IT9070A1_Initial_DDR2_Mem_tiling_pitch2048_320MHZ.csf")
+# CFG_DBG_BLUESCREEN is not set
+# CFG_DBG_MEMLEAK is not set
+# CFG_DBG_RMALLOC is not set
+set(CFG_DBG_STATS_PERIOD "10")
+# CFG_DBG_STATS_TASK_LIST is not set
+# CFG_DBG_STATS_TASK_TIME is not set
+# CFG_DBG_STATS_MEM_BANDWIDTH is not set
+# CFG_DBG_STATS_TCPIP is not set
+# CFG_DBG_STATS_FAT is not set
+# CFG_DBG_TRACE_ANALYZER is not set
+# CFG_DBG_CLI is not set
+# CFG_ENABLE_UART_CLI is not set
+
+#
+# Upgrade
+#
+set(CFG_UPGRADE_BOOTLOADER_NAND y)
+# CFG_UPGRADE_BOOTLOADER_NOR is not set
+# CFG_UPGRADE_BOOTLOADER_SD0 is not set
+# CFG_UPGRADE_BOOTLOADER_SD1 is not set
+# CFG_UPGRADE_BOOTLOADER_NAND_BACKUP is not set
+# CFG_UPGRADE_BOOTLOADER_EXTERNAL_PROJECT is not set
+set(CFG_UPGRADE_IMAGE_NAND y)
+# CFG_UPGRADE_IMAGE_NOR is not set
+# CFG_UPGRADE_IMAGE_SD0 is not set
+# CFG_UPGRADE_IMAGE_SD1 is not set
+# CFG_UPGRADE_IMAGE_NAND_BACKUP is not set
+set(CFG_UPGRADE_PRIVATE_NAND y)
+# CFG_UPGRADE_PRIVATE_NOR is not set
+# CFG_UPGRADE_PRIVATE_SD0 is not set
+# CFG_UPGRADE_PRIVATE_SD1 is not set
+set(CFG_UPGRADE_PUBLIC_NAND y)
+# CFG_UPGRADE_PUBLIC_NOR is not set
+# CFG_UPGRADE_PUBLIC_SD0 is not set
+# CFG_UPGRADE_PUBLIC_SD1 is not set
+# CFG_UPGRADE_TEMP is not set
+set(CFG_UPGRADE_ENC_KEY "0")
+# CFG_UPGRADE_PRESSKEY is not set
+set(CFG_UPGRADE_FILENAME "ITEPKG03.PKG")
+set(CFG_UPGRADE_FILENAME_LIST "ITEPKG03.PKG")
+set(CFG_UPGRADE_DELAY_AFTER_FINISH "10")
+set(CFG_UPGRADE_USB_DETECT_TIMEOUT "300")
+set(CFG_UPGRADE_USB_TIMEOUT "8000")
+set(CFG_UPGRADE_NOR_IMAGE_FILENAME "ITE_NOR.ROM")
+# CFG_UPGRADE_NAND_IMAGE is not set
+set(CFG_UPGRADE_PACKAGE_VERSION "1.0")
+# CFG_UPGRADE_BACKUP_PACKAGE is not set
+set(CFG_UPGRADE_MARK_POS "0")
+
+#
+# SDK
+#
+# CFG_BUILD_DEBUG is not set
+# CFG_BUILD_DEBUGREL is not set
+# CFG_BUILD_RELEASE is not set
+set(CFG_BUILD_MINSIZEREL y)
+set(CFG_VERSION_MAJOR "2")
+set(CFG_VERSION_MINOR "2")
+set(CFG_VERSION_PATCH "8")
+set(CFG_VERSION_CUSTOM "1")
+set(CFG_MANUFACTURER "www.ite.com.tw")
+# CFG_GENERATE_DOC is not set
+# CFG_GENERATE_PACK_ENV is not set
+# CFG_GENERATE_VERSION_TWEAK is not set
+
+#
+# Midea HSG Setting
+#
+# CFG_SPI_LCD_NONE is not set
+# CFG_SPI_LCD_800X480_NT35510 is not set
+# CFG_SPI_LCD_800X480_RM68180 is not set
+# CFG_SPI_LCD_854X480_RM7701 is not set
+# CFG_SPI_LCD_800X480_OTM8019A is not set
+# CFG_SPI_LCD_854X480_ILI9806E is not set
+set(CFG_SPI_LCD_854X480_DX050H049 y)
+# CFG_SPI_LCD_800X480_DX040B043 is not set
+# CFG_SPI_LCD_854X480_ST7701_DX050C023 is not set
+set(CFG_MIDEA_HSG_SPECIAL_SET y)
+set(CFG_LCD_SPI_CS_GPIO "71")
+set(CFG_LCD_SPI_CLK_GPIO "70")
+set(CFG_LCD_SPI_DATA_GPIO "69")
+set(CFG_LCD_LCM_RESET "64")
+set(CFG_LCD_LCM_POWER "38")
+set(CFG_LCD_LCM_BACKLIGHT_EN "77")
+set(CFG_GPIO_WIFI_SWITCH "37")
+set(CFG_GPIO_AUDIO_AMP_POWER "11")
+set(CFG_SD_POWER_RESET_ACTIVE_LOW y)
+
+#
+# Drivers
+#
+
+#
+# ith
+#
+set(CFG_ITH_ERR y)
+set(CFG_ITH_WARN y)
+set(CFG_ITH_INFO y)
+# CFG_ITH_DBG is not set
+# CFG_ITH_FPGA is not set
+
+#
+# itp
+#
+set(CFG_ITP_ERR y)
+set(CFG_ITP_WARN y)
+set(CFG_ITP_INFO y)
+# CFG_ITP_DBG is not set
+
+#
+# Libraries
+#
+
+#
+# (unvisible)
+#
+
+#
+# dhcps (unvisible)
+#
+set(CFG_BUILD_ITC y)
+set(CFG_BUILD_ZLIB y)
+
+#
+# ffmpeg
+#
+# CFG_FFMPEG_ENC is not set
+# CFG_FFMPEG_H264_SW is not set
+
+#
+# (unvisible)
+#
+
+#
+# itc
+#
+set(CFG_ITC_ERR y)
+set(CFG_ITC_WARN y)
+set(CFG_ITC_INFO y)
+# CFG_ITC_DBG is not set
+
+#
+# (unvisible)
+#
+
+#
+# itu
+#
+set(CFG_ITU_ERR y)
+set(CFG_ITU_WARN y)
+set(CFG_ITU_INFO y)
+# CFG_ITU_DBG is not set
+# CFG_ITU_LOAD is not set
+# CFG_ITU_UPDATE is not set
+# CFG_ITU_DRAW is not set
+# CFG_ITU_UCL_ENABLE is not set
+# CFG_ITU_ASSERT_THREAD is not set
+set(CFG_BUILD_FFMPEG y)
+set(CFG_BUILD_FREETYPE y)
+set(CFG_BUILD_PNG y)
+set(CFG_BUILD_REDBLACK y)
+
+#
+# (unvisible)
+#
+
+#
+# upgrade
+#
+set(CFG_UG_ERR y)
+set(CFG_UG_WARN y)
+set(CFG_UG_INFO y)
+# CFG_UG_DBG is not set
+set(CFG_UG_BUF_SIZE "0x40000")
+
+#
+# Display Control Board
+#
+# CFG_PLAY_VIDEO_ON_BOOTING is not set
+# CFG_PLAY_MJPEG_ON_BOOTING is not set
+set(CFG_HW_VERSION "V02")
+# CFG_SCREENSHOT_ENABLE is not set
+set(CFG_WEBSERVER_PORT "80")
+set(CFG_ITU_PATH "itu/800x480")
+set(CFG_UPGRADE_FTP_URL "ftp://192.168.1.1/ctrlboard/ITEPKG03.PKG")
+# CFG_UPGRADE_GUI is not set
+# CFG_DYNAMIC_LOAD_TP_MODULE is not set
