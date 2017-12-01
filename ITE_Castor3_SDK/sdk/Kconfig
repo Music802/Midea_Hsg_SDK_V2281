@@ -9451,7 +9451,6 @@ config MIDEA_HSG_SPECIAL_SET
 
 config LCD_SPI_CS_GPIO
     string "LCD SPI CS Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         Lcd spi cs gpio.
@@ -9461,7 +9460,6 @@ config LCD_SPI_CS_GPIO
         Lcd spi cs gpio.		
 config LCD_SPI_CLK_GPIO
     string "LCD SPI CLK Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         Lcd spi clk gpio.
@@ -9471,7 +9469,6 @@ config LCD_SPI_CLK_GPIO
         Lcd spi clk gpio.
 config LCD_SPI_DATA_GPIO
     string "LCD SPI DATA Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         Lcd spi data gpio.
@@ -9481,7 +9478,6 @@ config LCD_SPI_DATA_GPIO
         Lcd spi data gpio.		
 config LCD_LCM_RESET
     string "LCD LCM Reset Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         Lcd reset pin.
@@ -9491,7 +9487,6 @@ config LCD_LCM_RESET
         Lcd reset pin.
 config LCD_LCM_POWER
     string "LCD Power Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         Lcd power pin.
@@ -9501,7 +9496,6 @@ config LCD_LCM_POWER
         Lcd power pin.
 config LCD_LCM_BACKLIGHT_EN
     string "LCD Backlight Enable Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         Lcd backlight enable pin.
@@ -9512,7 +9506,6 @@ config LCD_LCM_BACKLIGHT_EN
 
 config GPIO_WIFI_SWITCH
     string "USB1 WIFI Power Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         The GPIO number for wifi switch.
@@ -9523,7 +9516,6 @@ config GPIO_WIFI_SWITCH
 		
 config GPIO_AUDIO_AMP_POWER
     string "GPIO Audio Amp Power Pin"
-    depends on MIDEA_HSG_SPECIAL_SET
     default "-1"
     help
         GPIO audio amp power.

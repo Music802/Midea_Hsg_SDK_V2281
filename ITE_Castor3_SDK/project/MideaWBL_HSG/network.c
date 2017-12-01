@@ -13,6 +13,11 @@
 #include "ftpd.h"
 #endif
 
+#include "curl/curl.h"
+#include "yajl/yajl_tree.h"
+
+#define OTA_TEST_OLNY
+
 #define DHCP_TIMEOUT_MSEC (60 * 1000) //60sec
 
 static struct timeval tvStart = {0, 0}, tvEnd = {0, 0};
@@ -25,6 +30,194 @@ static bool wifi_dongle_hotplug, need_reinit_wifimgr;
 static int gInit =0; // wifi init
 #endif
 
+//////////
+/*Kenny porting for Nick's Patch*/
+//  Get Json Data
+#ifdef OTA_TEST_OLNY
+#define HTTP_OTA_URL_TEST_ADDRESS  "http://iot2.midea.com.cn:8080/ota/v1/pro2app/version/by/app/get?sn=EGE04GH7-S00L00&version=0.9.9"
+#else
+#define HTTP_OTA_URL_STR_SN "http://iot2.midea.com.cn:8080/ota/v1/pro2app/version/by/app/get?sn="
+#define HTTP_OTA_URL_STR_VER "&version="
+#endif
+struct MemoryStruct {
+  char *memory;
+  size_t size;
+};
+
+static unsigned char urlOTA[2048]; /*进行OTA请求的URL*/
+static unsigned char fileData[2048];
+// keep ota url
+static unsigned char urlPKG[2048]; /*OTA请求后，返回pkg升级的URL*/
+
+// return 1, get ota url, return 0, no need upgrade
+int ParseConfig(char* pData,int nSize)
+{
+    size_t rd;
+    yajl_val node;
+    char errbuf[1024];
+    char tmpbuf[256];
+    FILE* f;
+    const char * path[] = { "errorCode", (const char *) 0 };  
+    const char * path1[] = { "result","url", (const char *) 0 };
+    yajl_val v,v1 ; 
+    int *errorCode;
+    /* null plug buffers */ 
+    fileData[0] = errbuf[0] = 0; 
+    
+    memset(urlPKG,0,sizeof(urlPKG));
+    /* read the entire data */
+    memcpy(fileData,pData,nSize);
+    
+    /* we have the whole config file in memory.  let's parse it ... */
+    node = yajl_tree_parse((const char *) fileData, errbuf, sizeof(errbuf)); 
+    /* parse error handling */    
+    if (node == NULL) 
+    {     
+        printf("parse_error: ");
+        if (strlen(errbuf)) 
+            printf(" %s", errbuf); 
+        else 
+            printf("unknown error"); 
+        
+        printf(stderr, "\n");   
+        return 1;
+    } 
+    
+    /* ... and extract a nested value from the config file */
+    v = yajl_tree_get(node, path, yajl_t_string); 
+    if (v)  
+        printf("%s: %s\n", path[0], YAJL_GET_STRING(v));
+    else 
+        printf("no such node: %s/%s\n", path[0], path[1]);
+    
+    errorCode = YAJL_GET_NUMBER(v); 
+    strcpy(tmpbuf,YAJL_GET_STRING(v));
+    if (tmpbuf[0]=='0')
+    { 
+        printf("error code 0 ,get url\n"); 
+        v1 = yajl_tree_get(node, path1, yajl_t_string); 
+        if (v1) {
+           strcpy(urlPKG,YAJL_GET_STRING(v1));            
+            printf("%s: %s\n", path1[1], urlPKG); 
+        }
+        yajl_tree_free(node); 
+
+        return 1;
+    } 
+    else
+    {
+        //printf("error code %d %d %d\n",YAJL_GET_NUMBER(v),YAJL_IS_NUMBER(v),v->type); 
+        yajl_tree_free(node); 
+        
+    } 
+    return 0;
+}
+
+ 
+static size_t
+WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
+{
+  size_t realsize = size * nmemb;
+  struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+ 
+  mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+  if(mem->memory == NULL) {
+    /* out of memory! */ 
+    printf("not enough memory (realloc returned NULL)\n");
+    return 0;
+  }
+ 
+  memcpy(&(mem->memory[mem->size]), contents, realsize);
+  mem->size += realsize;
+  mem->memory[mem->size] = 0;
+ 
+  return realsize;
+}
+
+
+// return 1, get ota url, return 0, no need upgrade  
+static int OTACheck(void)
+{
+  CURL *curl_handle;
+  CURLcode res;
+  int nResult = 0;
+ 
+  struct MemoryStruct chunk;
+ 
+  chunk.memory = malloc(1);  /* will be grown as needed by the realloc above */ 
+  chunk.size = 0;    /* no data at this point */ 
+ 
+  curl_global_init(CURL_GLOBAL_ALL);
+ 
+  /* init the curl session */ 
+  curl_handle = curl_easy_init();
+ 
+  /* specify URL to get */ 
+  curl_easy_setopt(curl_handle, CURLOPT_URL, urlOTA);
+ 
+  /* send all data to this function  */ 
+  curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+ 
+  /* we pass our 'chunk' struct to the callback function */ 
+  curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
+ 
+  /* some servers don't like requests that are made without a user-agent
+     field, so we provide one */ 
+  curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
+ 
+  /* get it! */ 
+  res = curl_easy_perform(curl_handle);
+ 
+  /* check for errors */ 
+  if(res != CURLE_OK) {
+    fprintf(stderr, "curl_easy_perform() failed: %s\n",
+            curl_easy_strerror(res));
+  }
+  else {
+    /*
+     * Now, our chunk.memory points to a memory block that is chunk.size
+     * bytes big and contains the remote file.
+     *
+     * Do something nice with it!
+     */ 
+ 
+    printf("%lu bytes retrieved %s \n", (long)chunk.size,chunk.memory);
+    nResult = ParseConfig(chunk.memory,chunk.size);
+  }
+ 
+  /* cleanup curl stuff */ 
+  curl_easy_cleanup(curl_handle);
+ 
+  free(chunk.memory);
+ 
+  /* we're done with libcurl, so clean it up */ 
+  curl_global_cleanup();
+ 
+  return nResult;
+}
+/*
+检查SERVER上是否有新版本
+返回1：有新版本，用urlPKG进行升级
+返回0：当前软件为最新版本
+*/
+static int UpgradeSetOTAUrl(char *sn,char *version)
+{
+	int nResult = 0;
+    memset(urlOTA,0,sizeof(urlOTA));
+	#ifdef OTA_TEST_OLNY
+	memcpy(urlOTA,HTTP_OTA_URL_TEST_ADDRESS,sizeof(urlOTA));
+	#else
+	 sprintf(urlOTA,"HTTP_OTA_URL_STR_SN%sHTTP_OTA_URL_STR_VER%s",sn,version);
+	#endif
+	 printf("OTA Upgrade  URL>>%s\r\n",urlOTA);
+	    nResult = OTACheck();
+    if (nResult) {
+        printf("OTA New Verison URL>> %s \n",urlPKG);
+    } else {
+        printf("OTA Latest Version  %s\n",urlPKG);
+   }
+}
+///////////////////////////////////////////
 
 static void ResetEthernet(void)
 {

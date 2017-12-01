@@ -1,7 +1,7 @@
 #
 # Automatically generated file; DO NOT EDIT.
 # Project Configuration
-# Thu Nov 30 18:32:51 2017
+# Fri Dec 01 16:11:40 2017
 #
 #
 set(CFG_DEF_SPI_LCD_854X480_DX050H049 y)
@@ -167,6 +167,7 @@ set(CFG_NET_WIFI_8188EUS y)
 #
 # (unvisible)
 #
+set(CFG_BUILD_YAJL y)
 set(CFG_BOOTLOADER_ENABLE y)
 
 #

@@ -34,6 +34,7 @@ void AudioInit(void)
     pthread_mutex_init(&audioPlayMutex, NULL);
 
     audioInited = true;
+    smtkAudioMgrOpenEngine(SMTK_AUDIO_WAV);
 }
 
 void AudioExit(void)
@@ -106,7 +107,9 @@ int AudioPlay(char* filename, AudioPlayCallback func)
     if (stricmp(ext, "wav") == 0)
     {
         audiomgr_local.nType            = SMTK_AUDIO_WAV;
-        audiomgr_local.audioMgrCallback = AudioPlayCallbackFuncEmpty;
+        audioPlayCallback  = func;
+        if(func == NULL)
+            audiomgr_local.audioMgrCallback = AudioPlayCallbackFuncEmpty;        
     }
     else if (stricmp(ext, "mp3") == 0)
     {

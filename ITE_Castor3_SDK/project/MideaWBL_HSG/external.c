@@ -6,8 +6,13 @@
 #include "ite/itp.h"
 #include "ctrlboard.h"
 #include "scene.h"
-
-#define WIN32_USE_UART
+/*
+Kenny
+是否开启WIN32模拟UART读写
+WIN32_UART_PORT对应PC的COM PORT
+WIN32_UART_BUNDRATE是通信的BUNDRATE
+*/
+//#define WIN32_USE_UART
 #define WIN32_UART_PORT 8
 #define WIN32_UART_BUNDRATE 115200
 

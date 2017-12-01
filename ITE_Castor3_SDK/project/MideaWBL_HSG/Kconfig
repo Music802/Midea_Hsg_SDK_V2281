@@ -469,6 +469,9 @@ config BUILD_LWIP_FTPD
     def_bool y
 endif
 
+config BUILD_YAJL
+    def_bool y
+	
 ######################################################################
 # Start of bootloader setting
 ######################################################################

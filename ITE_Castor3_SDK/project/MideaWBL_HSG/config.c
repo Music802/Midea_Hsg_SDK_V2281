@@ -9,12 +9,26 @@
 #include "scene.h"
 
 #define INI_FILENAME "ctrlboard.ini"
+#define FOOD_FILENAME "/food.ini"
+#define FOOD_CONFIG_MAX 16
 
 Config theConfig;
 static dictionary* cfgIni;
 static bool cfgIsSaving;
 static bool cfgSavingCount;
 static pthread_mutex_t cfgMutex  = PTHREAD_MUTEX_INITIALIZER;
+
+int foodFileCount = 0;
+int foodIndex = 0;
+DIR* dirp;
+struct dirent* entry;
+foodConfig thefoodConfig;
+static dictionary* foodcfgIni;
+static bool foodcfgIsSaving;
+static bool foodcfgSavingCount;
+static pthread_mutex_t foodcfgMutex = PTHREAD_MUTEX_INITIALIZER;
+foodConfig fConfig[FOOD_CONFIG_MAX];
+char foodnum[3], foodFilePath[30];
 
 void ConfigInit(void)
 {
@@ -72,6 +86,43 @@ void ConfigInit(void)
     theConfig.touch_calibration = iniparser_getint(cfgIni, "ctrlboard:touch_calibration", 1);
 
     cfgSavingCount = 0;
+
+	//food ini
+	dirp = opendir(CFG_PUBLIC_DRIVE":/media/menu/");
+	while ((entry = readdir(dirp)) != NULL){
+		if (entry->d_type == DT_DIR)
+			foodFileCount++;
+	}
+	closedir(dirp);
+
+	for (foodIndex = 0; foodIndex < foodFileCount - 2; foodIndex++)
+	{
+		strcpy(foodFilePath, CFG_PUBLIC_DRIVE ":/media/menu/food");
+		sprintf(foodnum, "%d", foodIndex);
+		strcat(foodFilePath, foodnum);
+		strcat(foodFilePath, FOOD_FILENAME);
+		foodcfgIni = iniparser_load(foodFilePath);
+		if (!foodcfgIni)
+		{
+			foodcfgIni = dictionary_new(0);
+			assert(foodcfgIni);
+		}
+		strcpy(fConfig[foodIndex].name, iniparser_getstring(foodcfgIni, "food:name", "food"));
+		fConfig[foodIndex].total_time = iniparser_getint(foodcfgIni, "food:total_time", 0);
+		fConfig[foodIndex].upper_temp = iniparser_getint(foodcfgIni, "food:upper_temp", 0);
+		fConfig[foodIndex].bottom_temp = iniparser_getint(foodcfgIni, "food:bottom_temp", 0);
+		fConfig[foodIndex].cook_time[0][0] = iniparser_getint(foodcfgIni, "food:cook_time1M", 0);
+		fConfig[foodIndex].cook_time[0][1] = iniparser_getint(foodcfgIni, "food:cook_time1S", 0);
+		fConfig[foodIndex].cook_power[0] = iniparser_getint(foodcfgIni, "food:cook_power1", 0);
+		fConfig[foodIndex].cook_time[1][0] = iniparser_getint(foodcfgIni, "food:cook_time2M", 0);
+		fConfig[foodIndex].cook_time[1][1] = iniparser_getint(foodcfgIni, "food:cook_time2S", 0);
+		fConfig[foodIndex].cook_power[1] = iniparser_getint(foodcfgIni, "food:cook_power2", 0);
+		fConfig[foodIndex].cook_time[2][0] = iniparser_getint(foodcfgIni, "food:cook_time3M", 0);
+		fConfig[foodIndex].cook_time[2][1] = iniparser_getint(foodcfgIni, "food:cook_time3S", 0);
+		fConfig[foodIndex].cook_power[2] = iniparser_getint(foodcfgIni, "food:cook_power3", 0);
+		fConfig[foodIndex].sequence = iniparser_getint(foodcfgIni, "food:sequence", foodIndex);
+	}
+	cfgSavingCount = 0;
 }
 
 void ConfigExit(void)
@@ -150,9 +201,66 @@ static void ConfigSavePublic(void)
 	    printf("cannot open ini file: %s\n", CFG_PUBLIC_DRIVE ":/" INI_FILENAME);
         return;
     }
+	iniparser_dump_ini(cfgIni, f);
+	fclose(f);
+	// save food data
+	for (foodIndex = 0; foodIndex < foodFileCount - 2; foodIndex++)
+	{
+		iniparser_set(foodcfgIni, "food:name", fConfig[foodIndex].name);
+		sprintf(buf, "%d", fConfig[foodIndex].total_time);
+		iniparser_set(foodcfgIni, "food:total_time", buf);
 
-    iniparser_dump_ini(cfgIni, f);
-    fclose(f);
+		sprintf(buf, "%d", fConfig[foodIndex].upper_temp);
+		iniparser_set(foodcfgIni, "food:upper_temp", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].bottom_temp);
+		iniparser_set(foodcfgIni, "food:bottom_temp", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_time[0][0]);
+		iniparser_set(foodcfgIni, "food:cook_time1M", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_time[0][1]);
+		iniparser_set(foodcfgIni, "food:cook_time1S", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_power[0]);
+		iniparser_set(foodcfgIni, "food:cook_power1", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_time[1][0]);
+		iniparser_set(foodcfgIni, "food:cook_time2M", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_time[1][1]);
+		iniparser_set(foodcfgIni, "food:cook_time2S", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_power[1]);
+		iniparser_set(foodcfgIni, "food:cook_power2", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_time[2][0]);
+		iniparser_set(foodcfgIni, "food:cook_time3M", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_time[2][1]);
+		iniparser_set(foodcfgIni, "food:cook_time3S", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].cook_power[2]);
+		iniparser_set(foodcfgIni, "food:cook_power3", buf);
+
+		sprintf(buf, "%d", fConfig[foodIndex].sequence);
+		iniparser_set(foodcfgIni, "food:sequence", buf);
+
+		strcpy(foodFilePath, CFG_PUBLIC_DRIVE ":/media/menu/food");
+		sprintf(foodnum, "%d", foodIndex);
+		strcat(foodFilePath, foodnum);
+		strcat(foodFilePath, FOOD_FILENAME);
+
+		f = fopen(foodFilePath, "wb");
+		if (!f)
+		{
+			printf("cannot open ini file: %s\n", foodFilePath);
+			return;
+		}
+
+		iniparser_dump_ini(foodcfgIni, f);
+		fclose(f);
+	}
 }
 
 static void* ConfigSaveTask(void* arg)

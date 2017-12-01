@@ -39,7 +39,7 @@ void SD_PowerOnReg(int index)
 {
     int result = 0;
 
-    SD_PowerReset(index, 30); /** move to top because power down will io unselect */
+    SD_PowerReset(index, 100); /** move to top because power down will io unselect */
     SD_SelectIo(index);
 
     /** clock delay */

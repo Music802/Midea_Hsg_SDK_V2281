@@ -170,6 +170,24 @@ typedef struct
  */
 extern Config theConfig;
 
+typedef struct
+{
+	char name[32];
+	int total_time;
+	int upper_temp;
+	int bottom_temp;
+	int cook_time[3][2]; //[0 for minute, 1 for second]
+	int cook_power[3];
+	int sequence;
+	struct foodConfig *next;
+} foodConfig;
+
+/**
+* Global instance variable of configuration.
+*/
+extern foodConfig fConfig[16];
+
+
 /**
  * Loads configuration file.
  */

@@ -88,7 +88,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/sdk/share/microhttpd/include
     ${PROJECT_SOURCE_DIR}/sdk/share/wifi_mgr/ 
     ${PROJECT_SOURCE_DIR}/sdk/driver/itv
-
+    ${PROJECT_SOURCE_DIR}/sdk/share/yajl
 if (CFG_CHIP_FAMILY STREQUAL 9850)
     include_directories(
         ${PROJECT_SOURCE_DIR}/sdk/share/itu
@@ -120,6 +120,10 @@ add_executable(${CMAKE_PROJECT_NAME}
     upgrade.c
     backup.c
     )
+	file(COPY
+		${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/media/menu
+		DESTINATION ${CMAKE_BINARY_DIR}/data/public/media
+		)
 
 # layers
 include(layer.cmake)

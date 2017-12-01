@@ -1,7 +1,7 @@
 #
 # Automatically generated file; DO NOT EDIT.
 # Project Configuration
-# Thu Nov 30 17:54:47 2017
+# Fri Dec 01 14:40:40 2017
 #
 #
 set(CFG_CTRLBOARD y)
@@ -53,7 +53,7 @@ set(CFG_GPIO_SD0_IO "16, 17, 18, 19, 20, 21, -1, -1, -1, -1")
 set(CFG_USB0_ENABLE y)
 set(CFG_MSC_ENABLE y)
 set(CFG_FS_FAT y)
-set(CFG_RTC_ENABLE y)
+# CFG_RTC_ENABLE is not set
 set(CFG_I2C0_ENABLE y)
 set(CFG_DEF_IIC0_GPIO_CONFIG_1 y)
 set(CFG_I2C1_ENABLE y)
@@ -183,8 +183,8 @@ set(CFG_DEF_CFG_RELEASE y)
 #
 # Develop Environment
 #
-# CFG_DEV_DEVELOP is not set
-set(CFG_DEV_RELEASE y)
+set(CFG_DEV_DEVELOP y)
+# CFG_DEV_RELEASE is not set
 
 #
 # OpenRTOS
@@ -197,7 +197,14 @@ set(CFG_MMAP_SIZE "0")
 #
 set(CFG_CPU_FA626 y)
 # CFG_CPU_SM32 is not set
+set(CFG_CHIP_REV_A0 y)
+# CFG_CHIP_REV_A1 is not set
+# CFG_CHIP_REV_B0 is not set
+# CFG_CHIP_PKG_IT9072 is not set
+# CFG_CHIP_PKG_IT9076 is not set
+# CFG_CHIP_PKG_IT9078 is not set
 # CFG_CHIP_PKG_IT9079 is not set
+# CFG_CHIP_PKG_IT9079H is not set
 # CFG_CHIP_PKG_IT9852 is not set
 set(CFG_CHIP_PKG_IT9854 y)
 # CFG_CHIP_PKG_IT9856 is not set
@@ -314,12 +321,6 @@ set(CFG_PUBLIC_DRIVE "B")
 #
 # Peripheral
 #
-set(CFG_RTC_MODULE "itp_rtc_bl5372.c")
-set(CFG_RTC_USE_I2C y)
-# CFG_RTC_I2C0 is not set
-set(CFG_RTC_I2C1 y)
-set(CFG_RTC_REDUCE_IO_ACCESS_ENABLE y)
-set(CFG_RTC_SYNC_PERIOD "1800")
 set(CFG_RTC_DEFAULT_TIMESTAMP "1483228800")
 # CFG_SW_I2C_ENABLE is not set
 set(CFG_I2S_OUTPUT_PIN_ENABLE y)

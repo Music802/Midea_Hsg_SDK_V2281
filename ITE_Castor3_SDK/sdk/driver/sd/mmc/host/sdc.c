@@ -178,7 +178,7 @@ static int sdc_init(struct sdc_host *host)
         return ERR_SD_NO_CARD;
 
     /* move to top because power down will io unselect */
-    sdc_power_reset(host->index, 30);
+    sdc_power_reset(host->index, 100);
     //sdc_io_select(host->idx);
 
     /* reset */
